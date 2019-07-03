@@ -1,9 +1,7 @@
 import React from 'react';
 
-function Wrapper() {
-    return (
-        <h1>young bohl u funny</h1>
-    );
+function Wrapper(props) {
+    return <main className="wrapper" {...props} />
 }
 
 export default Wrapper;
