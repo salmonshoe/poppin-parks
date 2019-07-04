@@ -50,7 +50,7 @@ class LoginForm extends Component {
                         placeholder="Password"
                     />
                 </form>
-                <button onClick={this.handleFormSubmit}>Submit</button>
+                <button className="btn btn-dark" onClick={this.handleFormSubmit}>Submit</button>
             </div>
         );
     }
