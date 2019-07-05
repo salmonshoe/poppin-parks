@@ -22,7 +22,7 @@ class LoginForm extends Component {
     handleFormSubmit = event => {
         event.preventDefault();
 
-        alert(`Welcome to Poppin' Parks ${this.state.name}`);
+        alert(`Welcome to Poppin' Parks!`);
 
         this.setState({
             email: '',
@@ -46,7 +46,7 @@ class LoginForm extends Component {
                         value={this.state.password}
                         name="password"
                         onChange={this.handleInputChange}
-                        type="text"
+                        type="password"
                         placeholder="Password"
                     />
                 </form>
