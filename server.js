@@ -1,11 +1,45 @@
 const express = require('express');
 const path = require('path');
-const PORT = process.env.PORT || 3001;
-const app = express();
+const mongoose =require('mongoose');
+const flash = require('connect-flash');
+const passport = require('passport');
+// Is it worth having express-session as a dependency? Research!
 
-// Middleware definitions
-app.use(express.urlencoded({ extended: true }));
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+//================ PASSPORT =========================
+// Passport Config
+require('./config/passport')(passport);
+
+// DB Config. FIgure out the proper syntax for loading a local MongoDB. If fails, try to hard code the link to your local host db
+const db = require('./config/keys')
+
+// Mongo Connection
+mongoose.connect(db, { useNewUrlParser: true })
+    .then(() => console.log('Mongo Connected'))
+    .catch(err => console.log(err));
+
+// Middleware definitions. Bodyparser and json format
+app.use(express.urlencoded({ extended: false })); // To get data from forms through req.body. When to keep true and when to keep false?
 app.use(express.json());
+
+// Passport Middleware
+app.use(passport.initialize());
+
+// Connect flash middleware
+app.use(flash());
+    // Global variables. Coming from flash, we create messages for users after registering
+    app.use((req, res) => {
+        res.locals.success_msg = req.flash('success_msg');
+        res.locals.error_msg = req.flash('error_msg');
+        res.locals.error = req.flash('error');
+        next();
+    })
+//===========================================
+
+
+// ================ ROUTES & REACT ====================
 
 // Serve up static assets (on Heroku)
 if (process.env.NODE_ENV === "production") {
@@ -16,6 +50,9 @@ if (process.env.NODE_ENV === "production") {
 app.get('/api/hello', (req, res) => {
     res.send('Hello World!');
 });
+
+app.use('/', require('./express-routes/index'));
+app.use('/users', require('./express-routes/users'));
 
 
 // Send every other request to the React app
