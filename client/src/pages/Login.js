@@ -1,19 +1,21 @@
 import React from 'react';
+import LoginForm from '../components/LoginForm';
+import { Link } from 'react-router-dom';
+import Container from '../components/Container';
 
 function Login() {
     return (
         <>
-            <form>
-                <div className="form-group">
-                    <label for="exampleEmail">Email Address</label>
-                    <input type="email" className="form-control" id="exampleEmailInput" placeholder="Enter email"></input>
-                </div>
-                <div className="form-group">
-                    <label for="examplePassword">Password</label>
-                    <input type="password" className="form-control" id="examplePassword" placeholder="Enter password"></input>
-                </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            <Container>
+                <LoginForm />
+            </Container>
+            <hr />
+            <h6>Not a member? Sign Up already!</h6>
+            <button className="btn btn-outline-primary">
+                <Link to='/signup'>
+                    Sign Up
+            </Link>
+            </button>
         </>
     );
 }
