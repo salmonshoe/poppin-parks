@@ -1,9 +1,9 @@
 const express = require('express');
 const path = require('path');
-const mongoose =require('mongoose');
+const mongoose = require('mongoose');
 const flash = require('connect-flash');
+const session = require('express-session');
 const passport = require('passport');
-// Is it worth having express-session as a dependency? Research!
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -12,8 +12,8 @@ const PORT = process.env.PORT || 3001;
 // Passport Config
 require('./config/passport')(passport);
 
-// DB Config. FIgure out the proper syntax for loading a local MongoDB. If fails, try to hard code the link to your local host db
-const db = require('./config/keys')
+// DB Config. Figure out the proper syntax for loading a local MongoDB. If fails, try to hard code the link to your local host db
+const db = require('./config/keys').MongoURI;
 
 // Mongo Connection
 mongoose.connect(db, { useNewUrlParser: true })
@@ -24,18 +24,26 @@ mongoose.connect(db, { useNewUrlParser: true })
 app.use(express.urlencoded({ extended: false })); // To get data from forms through req.body. When to keep true and when to keep false?
 app.use(express.json());
 
+// Express Session Middleware
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true
+}));
+
 // Passport Middleware
 app.use(passport.initialize());
+app.use(passport.session());
 
 // Connect flash middleware
 app.use(flash());
-    // Global variables. Coming from flash, we create messages for users after registering
-    app.use((req, res) => {
-        res.locals.success_msg = req.flash('success_msg');
-        res.locals.error_msg = req.flash('error_msg');
-        res.locals.error = req.flash('error');
-        next();
-    })
+// Global variables. Coming from flash, we create messages for users after registering
+app.use((req, res, next) => {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+})
 //===========================================
 
 
