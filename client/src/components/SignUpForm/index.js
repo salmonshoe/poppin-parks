@@ -35,11 +35,12 @@ class SignUpForm extends Component {
         } else {
             alert(`Welcome to Poppin' Parks ${this.state.firstName}`);
             API.saveUser({
-                name: this.state.firstName + this.state.lastName,
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
                 email: this.state.email,
                 password: this.state.password
             })
-                .then(console.log('Okay bro you some hot shit'))
+                .then(console.log('data sent?'))
                 .catch(err => console.log(err));
         }
 

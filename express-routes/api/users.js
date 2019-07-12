@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const usersController = require('../../controllers/usersController');
 
-const bcrypt = require('bcryptjs');
-const passport = require('passport'); // Check if you need to use these dependencies here..
+// const bcrypt = require('bcryptjs');
+// const passport = require('passport'); // Check if you need to use these dependencies here..
 
 // Matches with "/api/users"
 router.route('/')
