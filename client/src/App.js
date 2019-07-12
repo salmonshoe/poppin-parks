@@ -17,7 +17,7 @@ function App() {
         <Wrapper>
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/login" component={Login} />
-          <Route exact path="/" component={Profile} />
+          <Route exact path="/" component={Login} />
           <Route exact path="/profile" component={Profile} />
           <Route exact path="/park" component={Park} />
         </Wrapper>
