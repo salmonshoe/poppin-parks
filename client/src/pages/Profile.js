@@ -13,7 +13,7 @@ function Profile() {
                         <div className="card">
                             {/* <img src="#" className="card-img-top" alt="PROFILE_PIC.PNG" /> */}
                             <ProfilePic backgroundImage="https://avatars0.githubusercontent.com/u/9729776?s=400&v=4" />
-                            <div class="card-body">
+                            <div className="card-body">
                                 <h5 className="card-title">Gnarly Ant</h5>
                                 <p className="card-text">Yo I like to shred and grind down handrails for fun! Let's get a skate squad goin!</p>
                             </div>
