@@ -11,8 +11,9 @@ module.exports = function (passport) {
             // Match User to check if there is a User with an existing email and password
             User.findOne({ email: email })
                 .then(user => {
+                    // If there is no user with the with the given email
                     if (!user) {
-                        return done(null, false, { message: 'That email is not registered' })
+                        return done(null, false, { message: 'That email is not registered' });
                     }
 
                     // Match password

@@ -1,13 +1,13 @@
-//Anything for homepage or dashboard will go here
-const express = require('express');
-const router = express.Router();
-const { ensureAuthenticated } = require('../config/auth');
+const path = require('path');
+const router = require('express').Router();
+const apiRoutes = require("./api");
 
-//Welcome Page
-router.get('/', (request, response) => response.render('welcome'));
+// API Routes
+router.use('/api', apiRoutes);
 
-//Dashboard - Protect with Auth.
-router.get('/dashboard', (request, response) => 
-    response.render('dashboard'));
+// If no API routes are hit, send the React app
+router.use((req, res) => {
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
+});
 
 module.exports = router;

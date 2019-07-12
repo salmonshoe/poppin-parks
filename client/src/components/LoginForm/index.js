@@ -23,7 +23,7 @@ class LoginForm extends Component {
         event.preventDefault();
 
         alert(`Welcome to Poppin' Parks!`);
-
+//Get axios calls upon submission to print user data into the MongoDB
         this.setState({
             email: '',
             password: ''

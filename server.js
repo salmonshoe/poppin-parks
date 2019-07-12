@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
-
+const routes = require('./express-routes');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -37,6 +37,7 @@ app.use(passport.session());
 
 // Connect flash middleware
 app.use(flash());
+
 // Global variables. Coming from flash, we create messages for users after registering
 app.use((req, res, next) => {
     res.locals.success_msg = req.flash('success_msg');
@@ -51,25 +52,13 @@ app.use((req, res, next) => {
 
 // Serve up static assets (on Heroku)
 if (process.env.NODE_ENV === "production") {
-    app.use(express.static("client/build"));
+    app.use(express.static('client/build'));
 }
 
-// Define API routes here
-app.get('/api/hello', (req, res) => {
-    res.send('Hello World!');
-});
-
-app.use('/', require('./express-routes/index'));
-app.use('/users', require('./express-routes/users'));
-
-
-// Send every other request to the React app
-// Define any API routes before this runs
-app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "./client/build/index.html"));
-});
+// Routes here
+app.use(routes);
 
 app.listen(PORT, (err) => {
-    // if (err) throw err;
+    if (err) throw err;
     console.log(`🌎 ==> API server listening on port ${PORT}`);
 });

@@ -35,6 +35,9 @@ class SignUpForm extends Component {
             alert(`Welcome to Poppin' Parks ${this.state.firstName}`);
         }
 
+        // hit api to post into the User DB
+        // Generate  the usr object from inputs and make sure axios is played with in your UTILS FOLDER
+
         this.setState({
             firstName: '',
             lastName: '',
