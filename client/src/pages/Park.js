@@ -9,14 +9,19 @@ const [viewport] = useState({
     height: "100vh",
     zoom: 10
 });
-    return(<div>
-        <ReactMapGL {...viewport}>
-            
-        </ReactMapGL> 
-        
-        <h1>Skate Park</h1> 
-        </div>
-);
+require("dotenv").config()
+ return ( 
+     <div>
+         <ReactMapGL
+         {...viewport}
+         mapboxApiAccessToken = {
+             process.env.REACT_APP_MAPBOX_TOKEN
+         }
+         >
+             markers here
+         </ReactMapGL>
+     </div>
+ );
 }
 
 export default Park;

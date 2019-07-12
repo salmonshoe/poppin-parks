@@ -12,7 +12,7 @@
     "react-scripts": "3.0.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": " set \"REACT_APP_MAPBOX_TOKEN=pk.eyJ1IjoiYmVubmdvODkiLCJhIjoiY2p4dWc0YjNxMTR5czNicDZxeTFkZDVuMiJ9.phnMeC3OXn7c0E1vxk6ZyA\" && react-scripts start ",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

@@ -30,6 +30,7 @@ function Navbar() {
                     </li>
                     <li className="nav-item">
                         <Link
+                            to="/sign"
                             className={window.location.pathname === "/sign" ? "nav-link active" : "nav-link"}> 
                             Signout
                             {/* A dead link as of now. Eventually a logout button or route to sign users out */}
