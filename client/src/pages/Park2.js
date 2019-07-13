@@ -31,9 +31,12 @@ class Park2 extends Component {
             <img src={img003} alt="Paines Park" />
           </Row>
           <Row>
-            <Col>
+            <Col size="md-4">
+              <h1>Stats on Park</h1>
             </Col>
-            <Col></Col>
+            <Col size="md-8">
+              <h1>Reviews on the park?</h1>
+            </Col>
           </Row>
           <Row>
             <h1>Map goes here</h1>
