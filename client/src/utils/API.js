@@ -17,5 +17,19 @@ export default {
     saveUser: function(userData) {
         console.log(userData);
         return axios.post(`/api/users`, userData);
+    },
+
+    // Get the review with the given id
+    getReview: function(id) {
+        return axios.get(`/api/reviews/${id}`);
+    },
+    // Delete the review with the given id
+    deleteReview: function(id) {
+        return axios.delete(`/api/reviews/${id}`);
+    },
+    // Save a review to the database
+    saveReview: function(reviewData) {
+        console.log(reviewData);
+        return axios.post(`/api/reviews`, reviewData);
     }
 };
