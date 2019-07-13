@@ -6,6 +6,7 @@ router.route('/')
     .get(reviewsController.findAll)
     .post(reviewsController.create);
 
+// For connecting to '/api/reviews/:id'
 router.route('/:id')
     .get(reviewsController.findById)
     .post(reviewsController.create)

@@ -40,7 +40,6 @@ class SignUpForm extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
-                .then(console.log('data sent?'))
                 .catch(err => console.log(err));
         }
 
