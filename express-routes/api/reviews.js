@@ -6,4 +6,8 @@ router.route('/')
     .get(reviewsController.findAll)
     .post(reviewsController.create);
 
+router.route('/:id')
+    .get(reviewsController.findById)
+    .post(reviewsController.create)
+
 module.exports = router;

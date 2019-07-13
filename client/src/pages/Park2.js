@@ -1,29 +1,36 @@
-import React, {useState, Component } from 'react';
-import ReactMapGL from "react-map-gl";
+import React, { useState, Component } from 'react';
+// import ReactMapGL from "react-map-gl";
+import Container from '../components/Container';
+import Row from '../components/Row';
+import Col from '../components/Col';
 
 
+class Park2 extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            map: '',
+            images: '',
+            reviews: ''
+        }
+    };
 
-function Park() {
-const [viewport] = useState({
-    latitude: 39.55555,
-    longitude: -75.163526,
-    width: "100vw",
-    height: "100vh",
-    zoom: 10
-});
-require("dotenv").config()
- return ( 
-     <div>
-         <ReactMapGL
-         {...viewport}
-         mapboxApiAccessToken = {
-             process.env.REACT_APP_MAPBOX_TOKEN
-         }
-         >
-    
-         </ReactMapGL>
-     </div>
- );
+    render() {
+        return (
+            <>
+                <Container>
+                    <Row>
+                    </Row>
+                    <Row>
+                        <h1>Park Content goes here</h1>
+                    </Row>
+                    <Row>
+                        <h1>Map goes here</h1>
+                    </Row>
+                </Container>
+            </>
+        )
+    }
 }
 
-export default Park;
+export default Park2;
