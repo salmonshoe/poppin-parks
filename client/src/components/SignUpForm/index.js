@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API';
 import './style.css';
 
 class SignUpForm extends Component {
@@ -33,6 +34,13 @@ class SignUpForm extends Component {
             alert('Your passwords do not match');
         } else {
             alert(`Welcome to Poppin' Parks ${this.state.firstName}`);
+            API.saveUser({
+                firstName: this.state.firstName,
+                lastName: this.state.lastName,
+                email: this.state.email,
+                password: this.state.password
+            })
+                .catch(err => console.log(err));
         }
 
         // hit api to post into the User DB

@@ -1,17 +1,18 @@
-//Logins and Registers will go here
 const router = require('express').Router();
+const usersController = require('../../controllers/usersController');
+
 // const bcrypt = require('bcryptjs');
 // const passport = require('passport'); // Check if you need to use these dependencies here..
 
-//User model from Mongo
-const User = require('../../models/User');
+// Matches with "/api/users"
+router.route('/')
+    .get(usersController.findAll)
+    .post(usersController.create);
 
-router.route('/login')
-    .get(function (req, res) {
-        console.log('Hello World');
-        res.json({
-            "ERR": "but the right kind"
-        });
-    })
+// Matches with "/api/users/:id"
+router.route('/:id')
+    .get(usersController.findById)
+    .put(usersController.update)
+    .delete(usersController.remove);
 
 module.exports = router;

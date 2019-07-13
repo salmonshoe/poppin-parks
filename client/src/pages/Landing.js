@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import ReactMapGL from "react-map-gl"
+import ReactMapGL from "react-map-gl";
 
 function Park() {
 const [viewport] = useState({
