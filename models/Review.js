@@ -1,23 +1,24 @@
 const mongoose = require('mongoose');
 
 const ReviewSchema = new mongoose.Schema({
-    user_id: {
-        type: String
-        // Have it associate to the user posting a review
-    },
-    park_id: {
-        type: String
-        // Have it associate to the park getting reviewed
-    },
+
     review: {
-        type: String
+        type: String,
+        required: true
     },
     rating: {
-        type: Number
+        type: Number,
+        required: true
     },
     updated: {
         type: Date,
         default: Date.now
+    },
+    // 'user' is an object that stores a User id
+    // The ref property links the ObjectId to the User model associating our models
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
     }
 });
 
