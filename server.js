@@ -5,6 +5,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 const routes = require('./express-routes');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -34,6 +35,19 @@ app.use(session({
 // Passport Middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Internal Server Middleware
+const corsFn = cors({
+    origin: '*',
+    allowedHeaders: ['Content-Type']
+});
+
+app.use((req, res, next) => {
+    res.set('Access-Control-Allow-Origin', '*');
+    corsFn(req, res, () => {
+        next();
+    })
+});
 
 // Connect flash middleware
 app.use(flash());
