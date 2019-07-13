@@ -1,9 +1,11 @@
 import axios from 'axios';
 
+const backendPORT = 'http://localhost:3001';
+
 export default {
     // Get all users
     getUsers: function() {
-        return axios.get('/api/users');
+        return axios.get(`${backendPORT}/api/users`);
     },
     // Gets the user with the given id
     getUser: function(id) {
@@ -16,7 +18,7 @@ export default {
     // Saves a user to the database
     saveUser: function(userData) {
         console.log(userData);
-        return axios.post(`/api/users`, userData);
+        return axios.post(`${backendPORT}/api/users`, userData);
     },
 
     // Get the review with the given id
