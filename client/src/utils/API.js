@@ -1,5 +1,5 @@
 import axios from 'axios';
-
+const reqUrl = 'http://localhost/3001';
 
 export default {
     // Get all users
@@ -45,6 +45,6 @@ export default {
     // Save a park to the database
     savePark: function(parkData) {
         console.log(parkData);
-        return axios.post(`/api/parks`, parkData);
+        return axios.post(`${reqUrl}/api/parks`, parkData);
     }
 };

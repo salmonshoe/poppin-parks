@@ -1,4 +1,14 @@
 const router = require('express').Router();
+const parksController = require('../../controllers/parksController');
 
+// For connecting to '/api/parks/'
+router.route('/')
+    .get(parksController.findAll)
+    .post(parksController.create);
 
-// Establish park routes to api with the Controllers directory
+// For connection to '/api/parks/:id'
+router.route('/:id')
+    .get(parksController.findById)
+    .post(parksController.create);
+
+module.exports = router;
