@@ -3,6 +3,7 @@ import Container from '../components/Container';
 import Row from '../components/Row';
 import Col from '../components/Col';
 import ProfilePic from '../components/ProfilePic';
+import ParkForm from '../components/ParkForm';
 
 function Profile() {
     return (
@@ -33,11 +34,11 @@ function Profile() {
                             </div>
                             <div className="card-body">
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item"><i class="far fa-user-circle"></i> McCreesh Skate Park (07/01/19)</li>
-                                    <li className="list-group-item"><i class="far fa-user-circle"></i> Paines Park (06/20/19)</li>
-                                    <li className="list-group-item"><i class="far fa-user-circle"></i> Olney Church Lot (06/06/19)</li>
-                                    <li className="list-group-item"><i class="far fa-user-circle"></i> Dilworth Park (05/29/19)</li>
-                                    <li className="list-group-item"><i class="far fa-user-circle"></i> Parking Lot (04/20/19)</li>
+                                    <li className="list-group-item"><i className="far fa-user-circle"></i> McCreesh Skate Park (07/01/19)</li>
+                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Paines Park (06/20/19)</li>
+                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Olney Church Lot (06/06/19)</li>
+                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Dilworth Park (05/29/19)</li>
+                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Parking Lot (04/20/19)</li>
                                 </ul>
                                 <button type="button" className="btn btn-outline-dark">+ <span>Add a review</span></button>
                             </div>
@@ -56,6 +57,12 @@ function Profile() {
                                 <li className="list-group-item">Whitehall</li>
                                 <li className="list-group-item">Olney Church Lot</li>
                             </ul>
+                        </div>
+                    </Col>
+                    <Col size="md-8">
+                        <div className="card">
+                            <ParkForm />
+                            <br />
                         </div>
                     </Col>
                 </Row>

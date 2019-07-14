@@ -43,9 +43,6 @@ class SignUpForm extends Component {
                 .catch(err => console.log(err));
         }
 
-        // hit api to post into the User DB
-        // Generate  the usr object from inputs and make sure axios is played with in your UTILS FOLDER
-
         this.setState({
             firstName: '',
             lastName: '',
