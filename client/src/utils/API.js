@@ -1,11 +1,10 @@
 import axios from 'axios';
 
-const backendPORT = 'http://localhost:3001';
 
 export default {
     // Get all users
     getUsers: function() {
-        return axios.get(`${backendPORT}/api/users`);
+        return axios.get(`/api/users`);
     },
     // Gets the user with the given id
     getUser: function(id) {
@@ -18,9 +17,9 @@ export default {
     // Saves a user to the database
     saveUser: function(userData) {
         console.log(userData);
-        return axios.post(`${backendPORT}/api/users`, userData);
+        return axios.post(`/api/users`, userData);
     },
-
+//=======================================================================
     // Get the review with the given id
     getReview: function(id) {
         return axios.get(`/api/reviews/${id}`);
@@ -33,5 +32,19 @@ export default {
     saveReview: function(reviewData) {
         console.log(reviewData);
         return axios.post(`/api/reviews`, reviewData);
+    }, 
+// ======================================================================
+    // Get all parks
+    getParks: function() {
+        return axios.get('/api/parks');
+    },
+    // Get the park with the given id
+    getPark: function(id) {
+        return axios.get(`/api/parks/${id}`);
+    },
+    // Save a park to the database
+    savePark: function(parkData) {
+        console.log(parkData);
+        return axios.post(`/api/parks`, parkData);
     }
 };
