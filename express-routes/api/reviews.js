@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const reviewsController = require('../../controllers/reviewsController');
 
-// For connecting to '/api/reviews'
+// For connecting to '/api/reviews/'
 router.route('/')
     .get(reviewsController.findAll)
     .post(reviewsController.create);

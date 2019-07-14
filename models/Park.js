@@ -9,9 +9,25 @@ const ParkSchema = new mongoose.Schema({
         type: Number,
         required: true
     }, 
-    location: {
-        type: Object,
+    address: {
+        type: String,
         required: true
+    },
+    city: {
+        type: String,
+        required: true
+    },
+    state: {
+        type: String,
+        required: true
+    },
+    zipcode: {
+        type: String,
+        required: true
+    },
+    reminders: {
+        type: String,
+        required: false
     }
 });
 
