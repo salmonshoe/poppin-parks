@@ -46,5 +46,10 @@ export default {
     savePark: function(parkData) {
         console.log(parkData);
         return axios.post(`${reqUrl}/api/parks`, parkData);
+    },
+// ===================================================== For file uploads
+    fileUpload: function() {
+        return axios.post(`${reqUrl}/api/parks`);
     }
+    
 };

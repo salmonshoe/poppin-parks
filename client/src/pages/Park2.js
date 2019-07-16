@@ -15,10 +15,31 @@ class Park2 extends Component {
       map: '',
       images: '',
       text: '',
-      rating: ''
+      rating: '',
+      selectedFile: null
     }
   };
 
+// ============== FILES ================
+  fileSelectedHandler = event => {
+    console.log(event.target.files[0]);
+    this.setState({
+      selectedFile: event.target.files[0]
+    })
+  };
+
+  fileUploadHandler = event => {
+    console.log(event);
+    const fd = new FormData();
+    fd.append('image', this.state.selectedFile, this.state.selectedFile.name);
+    API.fileUpload(fd)
+      .then(res => {
+        console.log(res);
+      })
+      .catch(err => this.console.log(err));
+  }
+
+  //============= FORMS ================
   handleInputChange = event => {
     let value = event.target.value;
     const name = event.target.name;
@@ -94,6 +115,9 @@ class Park2 extends Component {
             <h1>Map goes here</h1>
           </Row>
         </Container>
+        <div className="Pic">
+          <input type="file" />
+        </div>
       </>
     )
   }
