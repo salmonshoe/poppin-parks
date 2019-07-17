@@ -72,7 +72,14 @@ if (process.env.NODE_ENV === "production") {
 // Routes here
 app.use(routes);
 
+// If deployed, use the deployed database, otherwise default to the local 
+// const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/pianoRollDB"
+
+// COnnect to the mongo db
+mongoose.connect(MONGODB_URI || `mongodb://${process.env.MLAB_DBNAME}:${process.env.MLAB_PASSWORD}ds243054.mlab.com:43054/heroku_w46s2bnm`);
+
 app.listen(PORT, (err) => {
     if (err) throw err;
     console.log(`🌎 ==> API server listening on port ${PORT}`);
 });
+

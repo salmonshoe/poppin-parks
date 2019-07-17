@@ -6,5 +6,5 @@
 // );
 
 module.exports = {
-MongoURI: 'mongodb+srv://Rafael:CHStemple1300!@poppin-parks-fpjhc.mongodb.net/test?retryWrites=true&w=majority'
+MongoURI: process.env.MONGODB_URI || 'mongodb+srv://Rafael:CHStemple1300!@poppin-parks-fpjhc.mongodb.net/test?retryWrites=true&w=majority'
 }

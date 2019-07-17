@@ -1,0 +1,75 @@
+{
+    "_id": {
+        "$oid": "5d20c51b1c9d440000e3958d"
+    },
+    "name": "FDR Park",
+    "images": {
+        "img001": "#",
+        "img002": "#",
+        "img003": "#"
+    },
+    "details": {
+        "grindrails": {
+            "$numberInt": "0"
+        },
+        "ramps": {
+            "$numberInt": "0"
+        },
+        "nipples": {
+            "$numberInt": "0"
+        },
+        "quarter pipes": {
+            "$numberInt": "0"
+        },
+        "half pipes": {
+            "$numberInt": "0"
+        },
+        "bowls": {
+            "$numberInt": "0"
+        },
+        "decks": {
+            "$numberInt": "0"
+        },
+        "spines": {
+            "$numberInt": "0"
+        },
+        "vert walls": {
+            "$numberInt": "0"
+        },
+        "funboxes": {
+            "$numberInt": "0"
+        },
+        "pyramids": {
+            "$numberInt": "0"
+        },
+        "roll-ins": {
+            "$numberInt": "0"
+        },
+        "pools": {
+            "$numberInt": "0"
+        },
+        "hand-rails": {
+            "$numberInt": "0"
+        },
+        "stairs": {
+            "$numberInt": "0"
+        },
+        "grind rails": {
+            "$numberInt": "0"
+        }
+    },
+    "overall rating": {
+        "$numberDouble": "4.5"
+    },
+    "location": {
+        "latitude": "39.8987",
+        "longitude": "75.1815",
+        "zoom": "",
+        "address": "1800 Pattison Ave",
+        "city": "Philadelphia",
+        "state": "PA",
+        "zipcode": "19145",
+        "country": "USA",
+        "directions": "Under the I-95 bridge"
+    }
+}
