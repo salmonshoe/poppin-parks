@@ -8,7 +8,7 @@ const ParkSchema = new mongoose.Schema({
     rating: {
         type: Number,
         required: true
-    }, 
+    },
     address: {
         type: String,
         required: true
@@ -28,7 +28,17 @@ const ParkSchema = new mongoose.Schema({
     reminders: {
         type: String,
         required: false
-    }
+    },
+    // 'reviews' is an array that stores a ObjectIds
+    // The ref property links the ObjectId to the Review model
+    // We can populate the Park with any associated Reviews 
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId, // acts as the 'foreign key' relationship associate for reviews into parks. Reviews are an array of values in this case.
+            ref: "Review"
+        }
+    ]
+
 });
 
 const Park = mongoose.model('Park', ParkSchema);

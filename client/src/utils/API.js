@@ -19,6 +19,11 @@ export default {
         console.log(userData);
         return axios.post(`/api/users`, userData);
     },
+    // Check for user log in
+    login: function(userData) {
+        console.log(userData);
+        return axios.post('/api/auth/login', userData);
+    },
 //=======================================================================
     // Get the review with the given id
     getReview: function(id) {
@@ -50,6 +55,9 @@ export default {
 // ===================================================== For file uploads
     fileUpload: function() {
         return axios.post(`${reqUrl}/api/parks`);
-    }
-    
+    },
+// ===================================================== For fetching data on user tokens
+    // fetchToken: function(token) {
+    //     return axios.get('/api/account/verify?token', );
+    // }
 };

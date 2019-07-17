@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import ReactMapGL from "react-map-gl";
 import API from '../utils/API';
 import Container from '../components/Container';
 import Row from '../components/Row';

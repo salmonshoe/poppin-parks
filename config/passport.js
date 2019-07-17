@@ -1,8 +1,4 @@
 const LocalStrategy = require('passport-local'); // Bring in Local strategy
-const mongoose = require('mongoose'); // Bring in Mongoose to check login info matches
-const bcrypt = require('bcryptjs'); // Tp decrypt the has and make sure passwords match
-
-// Local User Model
 const User = require('../models/User');
 
 module.exports = function (passport) {
@@ -15,16 +11,24 @@ module.exports = function (passport) {
                     if (!user) {
                         return done(null, false, { message: 'That email is not registered' });
                     }
+                    // If there is a user with the given email, but the password is incorrect
+                    else if (!user.validPassword(password)) {
+                        return done(null, false, {
+                            message: 'Incorrect Password.'
+                        });
+                    }
+                    // If none of the above, return the user
+                    return done(null, user);
 
                     // Match password
-                    bcrypt.compare(password, user.password, (err, isMatch) => {
-                        if (err) throw err;
-                        if (isMatch === true) {
-                            return done(null, user);
-                        } else {
-                            return done(null, false, { message: 'Password Incorrect' });
-                        }
-                    });
+                    // bcrypt.compare(password, user.password, (err, isMatch) => {
+                    //     if (err) throw err;
+                    //     if (isMatch === true) {
+                    //         return done(null, user);
+                    //     } else {
+                    //         return done(null, false, { message: 'Password Incorrect' });
+                    //     }
+                    // });
                 })
                 .catch(err => console.log(err));
         })

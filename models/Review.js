@@ -13,13 +13,8 @@ const ReviewSchema = new mongoose.Schema({
     updated: {
         type: Date,
         default: Date.now
-    },
-    // 'user' is an object that stores a User id
-    // The ref property links the ObjectId to the User model associating our models
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
     }
+    // Unsure on where to asscoaite my models in their schemas. I believe the one to many relationships will have review Object Ids in the Users and Park model.
 });
 
 const Review = mongoose.model('Review', ReviewSchema);
