@@ -5,7 +5,7 @@ import ReactMapGL from "react-map-gl";
 
 function Park() {
 const [viewport,setViewpoint] = useState({
-    latitude: 39.55555,
+    latitude: 39.898541,
     longitude: -75.163526,
     width: "100vw",
     height: "100vh",
