@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { getFromStorage } from '../utils/storage'; //add in setInStorage
 import Container from '../components/Container';
 import Row from '../components/Row';
 import Col from '../components/Col';
@@ -19,33 +18,14 @@ class Profile extends Component {
     }
 
     // Page will load, on this function, the fetch request will check if the client has a token in their local storage. If they are not, then redirect.
-    componentDidMount() {
-        const token = getFromStorage('the_main_app');
-        console.log(token);
-        // if (token) {
-        //     // Verify the token
-        //     fetch('/api/account/verify?token' + token)
-        //         .then(res = res.json())
-        //         .then(json => {
-        //             if (json.success) {
-        //                 this.setState({
-        //                     token,
-        //                     isLoading: false
-        //                 });
-        //             } else {
-        //                 this.setState({
-        //                     isLoading: false,
-        //                 });
-        //             }
-        //         });
-        // } else {
-        //     this.setState({
-        //         isLoading: false,
-        //     });
-        // }
-    }
 
     render() {
+        if (!JSON.parse(localStorage.getItem('isLoggedIn'))) {
+            return (
+                <h1>You are not logged in to see this</h1>
+            )
+        }
+
         return (
             <div>
                 <Container>

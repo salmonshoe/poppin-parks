@@ -19,7 +19,7 @@ class Park2 extends Component {
     }
   };
 
-// ============== FILES ================
+  // ============== FILES ================
   fileSelectedHandler = event => {
     console.log(event.target.files[0]);
     this.setState({
@@ -44,7 +44,7 @@ class Park2 extends Component {
     const name = event.target.name;
 
     this.setState({
-        [name]: value
+      [name]: value
     });
   };
 
@@ -70,6 +70,11 @@ class Park2 extends Component {
   };
 
   render() {
+    if (!JSON.parse(localStorage.getItem('isLoggedIn'))) {
+      return (
+        <h1>You are not logged in to see this</h1>
+      )
+    }
     return (
       <>
         <Container>
@@ -118,8 +123,9 @@ class Park2 extends Component {
           <input type="file" />
         </div>
       </>
-    )
+    );
   }
+
 }
 
 export default Park2;

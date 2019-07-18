@@ -23,10 +23,6 @@ const UserSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    isDeleted: {
-        type: Boolean,
-        default: false
-    },
     // 'reviews' is an array that stores a ObjectIds
     // The ref property links the ObjectId to the Review model
     // We can populate the User with any associated Reviews 
