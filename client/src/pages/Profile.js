@@ -1,99 +1,120 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Container from '../components/Container';
 import Row from '../components/Row';
 import Col from '../components/Col';
 import ProfilePic from '../components/ProfilePic';
 import ParkForm from '../components/ParkForm';
+import { List, ListItem } from '../components/List';
+import API from '../utils/API';
 
-function Profile() {
-    if (!JSON.parse(localStorage.getItem('isLoggedIn'))) {
-        return (
-            <Container>
-                <Row>
-                    <Col size="sm-6">
-                        <h3>Not a member? Sign up already!</h3>
-                        <button className="btn btn-outline-primary">
-                            <Link to='/signup'>
-                                Sign Up
-                    </Link>
-                        </button>
-                    </Col>
-                    <Col size="sm-6">
-                        <h3>Already a member? Login then!</h3>
-                        <button className="btn btn-outline-primary">
-                            <Link to='/login'>
-                                Login
-                    </Link>
-                        </button>
-                    </Col>
-                </Row>
-            </Container>
-        )
+class Profile extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            // firstName: '',
+            // lastName: '',
+            // email: ''
+            parks: [],
+            name: '',
+        }
+    };
+
+    componentDidMount() {
+        // console.log(this.props.match);
+        // API.getUser(this.props.match.params.id)
+        //     .then(res => this.setState({
+        //         firstName: res.data.firstName,
+        //         lastName: res.data.lastName,
+        //         email: res.data.email
+        //     }))
+        //     .catch(err => console.log(err));
+        this.loadParks();
     }
-    return (
-        <div>
-            <Container>
-                <Row>
-                    <Col size="md-4">
-                        <div className="card">
-                            {/* <img src="#" className="card-img-top" alt="PROFILE_PIC.PNG" /> */}
-                            <ProfilePic backgroundImage="https://avatars0.githubusercontent.com/u/9729776?s=400&v=4" />
-                            <div className="card-body">
-                                <h5 className="card-title">Gnarly Ant</h5>
-                                <p className="card-text">Yo I like to shred and grind down handrails for fun! Let's get a skate squad goin!</p>
-                            </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Philadelphia, PA</li>
-                                <li className="list-group-item"><h6>Rides:</h6> Skateboard, Roller Blades</li>
-                            </ul>
-                            <div className="card-body">
-                                <p>Maybe some extra information of just filler text/content from Users</p>
-                            </div>
-                        </div>
-                    </Col>
-                    <Col size="md-8">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Reviews</h3>
-                            </div>
-                            <div className="card-body">
+
+    loadParks = () => {
+        API.getParks()
+            .then(res =>
+                this.setState({ parks: res.data, name: '' }))
+            .catch(err => console.log(err));
+    }
+
+    render() {
+        if (!JSON.parse(localStorage.getItem('isLoggedIn'))) {
+            return (
+                <Container>
+                    <Row>
+                        <Col size="sm-6">
+                            <h3>Not a member? Sign up already!</h3>
+                            <button className="btn btn-outline-primary">
+                                <Link to='/signup'>
+                                    Sign Up
+                        </Link>
+                            </button>
+                        </Col>
+                        <Col size="sm-6">
+                            <h3>Already a member? Login then!</h3>
+                            <button className="btn btn-outline-primary">
+                                <Link to='/login'>
+                                    Login
+                        </Link>
+                            </button>
+                        </Col>
+                    </Row>
+                </Container>
+            )
+        }
+        return (
+            <div>
+                <Container>
+                    <Row>
+                        <Col size="md-4">
+                            <div className="card">
+                                <ProfilePic backgroundImage="https://images.theconversation.com/files/118273/original/image-20160412-15858-iee25.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=496&fit=clip" />
+                                <div className="card-body">
+                                    <h5 className="card-title">{this.state.firstName} {this.state.lastName}</h5>
+                                    <p className="card-text">{this.state.email}</p>
+                                </div>
                                 <ul className="list-group list-group-flush">
-                                    <li className="list-group-item"><i className="far fa-user-circle"></i> McCreesh Skate Park (07/01/19)</li>
-                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Paines Park (06/20/19)</li>
-                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Olney Church Lot (06/06/19)</li>
-                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Dilworth Park (05/29/19)</li>
-                                    <li className="list-group-item"><i className="far fa-user-circle"></i> Parking Lot (04/20/19)</li>
+                                    <li className="list-group-item">Philadelphia, PA</li>
                                 </ul>
-                                <button type="button" className="btn btn-outline-dark">+ <span>Add a review</span></button>
                             </div>
-                        </div>
-                    </Col>
-                </Row>
-                <br />
-                <Row>
-                    <Col size="md-4">
-                        <div className="card">
-                            <div className="card-header">
-                                <h5>Top Skate Spots</h5>
+                        </Col>
+                        <Col size="md-8">
+                            <div className="card">
+                                <ParkForm />
+                                <br />
                             </div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">FDR Park</li>
-                                <li className="list-group-item">Whitehall</li>
-                                <li className="list-group-item">Olney Church Lot</li>
-                            </ul>
-                        </div>
-                    </Col>
-                    <Col size="md-8">
-                        <div className="card">
-                            <ParkForm />
-                            <br />
-                        </div>
-                    </Col>
-                </Row>
-            </Container>
-        </div>
-    );
+                        </Col>
+                    </Row>
+                    <br />
+                    <Row>
+                        <Col size="md-4">
+                            <div className="card">
+                                <div className="card-header">
+                                    <h5>Top Skate Spots</h5>
+                                </div>
+                                {this.state.parks.length ? (
+                                    <List>
+                                        {this.state.parks.map(park => (
+                                            <ListItem key={park._id}>
+                                                <Link to={"/park/" + park._id}>
+                                                    <strong>
+                                                        {park.name}
+                                                    </strong>
+                                                </Link>
+                                            </ListItem>
+                                        ))}
+                                    </List>
+                                ) : (
+                                        <h3>No Results to Display</h3>
+                                    )}                            </div>
+                        </Col>
+                    </Row>
+                </Container>
+            </div>
+        );
+    }
 }
 
 export default Profile;

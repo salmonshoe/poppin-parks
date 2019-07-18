@@ -7,7 +7,7 @@ import API from '../utils/API';
 import Container from '../components/Container';
 import Row from '../components/Row';
 import Col from '../components/Col';
-import img003 from '../paines001.jpg';
+import img003 from '../imgs/paines/paines001.jpg';
 import ImgMap from '../components/ImgMap';
 //import ImgPark from '../components/ImgPark';
 
