@@ -98,7 +98,7 @@ class Profile extends Component {
                                     <List>
                                         {this.state.parks.map(park => (
                                             <ListItem key={park._id}>
-                                                <Link to={"/parks/" + park._id}>
+                                                <Link to={"/park/" + park._id}>
                                                     <strong>
                                                         {park.name}
                                                     </strong>
