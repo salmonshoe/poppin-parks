@@ -3,15 +3,20 @@ const db = require('../models');
 module.exports = {
     // login of a user
     login: (req, res) => {
+        console.log(req.body);
         db.User.findOne({
-            email: email
-        }).then(user => {
-            if(user.validPassword()) {
-                res.json({
-                    success: true
-                });
-            }
-        })
+            email: req.body.email,
+            password: req.body.password
+        }).then(//user => {
+            // if(user.validPassword()) {
+            //     res.json({
+            //         success: true
+            //     });
+            // }
+            res.json({
+                "success": true
+            })
+            )
         .catch(err => {
             if (err) return console.log(err)
             else {

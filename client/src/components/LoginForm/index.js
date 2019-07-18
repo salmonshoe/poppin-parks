@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import API from '../../utils/API';
 import './style.css'
 
 class LoginForm extends Component {
@@ -23,6 +24,17 @@ class LoginForm extends Component {
         event.preventDefault();
 
         alert(`Welcome to Poppin' Parks!`);
+        API.login({
+            email: this.state.email,
+            password: this.state.password
+        })
+        .then((res) => {
+            if (res.data.success) {
+                localStorage.setItem('isLoggedIn', true)
+            }
+        })
+        .catch(err => console.log(err));
+        
 //Get axios calls upon submission to print user data into the MongoDB
         this.setState({
             email: '',

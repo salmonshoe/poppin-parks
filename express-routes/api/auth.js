@@ -1,9 +1,11 @@
 const router = require('express').Router();
 const authController = require('../../controllers/authController');
 
-// To '/api/auth/login'
+// To '/api/auth/login' so localStorage can open a users' session use
 router.route('/login')
     .post(authController.login)
+
+
 
 // To '/api/auth/signup'
 router.route('/signup')
