@@ -2,6 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './style.css';
 
+function logoutBtn(event) {
+    event.preventDefault()
+    alert('Until next time!');
+    if (JSON.parse(localStorage.getItem('isLoggedIn'))) {
+        localStorage.setItem('isLoggedIn', false)
+    }
+}
+
 function Navbar() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-danger">
@@ -28,15 +36,12 @@ function Navbar() {
                             Parks
                         </Link>
                     </li>
-                    <li className="nav-item text-light">
-                        <Link
-                            to="/sign"
-                            className = {
-                                window.location.pathname === "/sign" ? "nav-link active text-light" : "nav-link"
-                            } >
-                            Signout
-                            {/* A dead link as of now. Eventually a logout button or route to sign users out */}
-                        </Link>
+
+                    <li className="nav-item">
+                        <button className="btn btn-light" onClick={logoutBtn}>
+                            Log Out
+                        </button>
+
                     </li>
                 </ul>
             </div>

@@ -46,5 +46,11 @@ export default {
     savePark: function(parkData) {
         console.log(parkData);
         return axios.post(`${reqUrl}/api/parks`, parkData);
+    },
+// ========================================================================
+    // Check for the user log in
+    login: function(userData) {
+        console.log(userData);
+        return axios.post('/api/auth/login', userData);
     }
 };
