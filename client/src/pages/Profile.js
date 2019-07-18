@@ -6,6 +6,11 @@ import ProfilePic from '../components/ProfilePic';
 import ParkForm from '../components/ParkForm';
 
 function Profile() {
+    if (!JSON.parse(localStorage.getItem('isLoggedIn'))) {
+        return (
+            <h1>You are not logged in to see this</h1>
+        )
+    }
     return (
         <div>
             <Container>
