@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './style.css'
+import API from '../../utils/API';
 
 class LoginForm extends Component {
     constructor(props) {
@@ -23,7 +24,17 @@ class LoginForm extends Component {
         event.preventDefault();
 
         alert(`Welcome to Poppin' Parks!`);
-//Get axios calls upon submission to print user data into the MongoDB
+        API.login({
+            email: this.state.email,
+            password: this.state.password
+        })
+        .then((res) => {
+            if (res.data.success) {
+                localStorage.setItem('isLoggedIn', true)
+            }
+        })
+        .catch(err => console.log(err));
+
         this.setState({
             email: '',
             password: ''
