@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
+
 // import ReactMapGL from "react-map-gl";
 import { Link } from 'react-router-dom';
+
 import API from '../utils/API';
 import Container from '../components/Container';
 import Row from '../components/Row';
 import Col from '../components/Col';
-import img003 from '../wphilly001.jpg';
+import img003 from '../paines001.jpg';
+import ImgMap from '../components/ImgMap';
+//import ImgPark from '../components/ImgPark';
+
+
 
 
 
@@ -79,26 +85,31 @@ class Park2 extends Component {
       <>
         <Container>
           <Row>
+            
             {/* Potential carousel for the images */}
-            <img src={img003} alt="Paines Park" />
+                
+            {/* <ImgPark /> */}
+          < h1 className = 'parkTitle text-center mt-5' > Paine's Park</h1>
+            <img src={img003} className='mt-2 mb-5' alt="Paines Park" />
           </Row>
           <Row>
             <Col size="md-4">
-              <h1>Park Stats</h1>
+              < h1 className = 'parkTitle' > Paine 's Park</h1>
               <h6>Location</h6>
-              <p>123 Philly St</p>
+              <p>Martin Luther King JR. Drive And & Benjamin Franklin Parkway, <br /> Philadelphia, PA 19130</p>
+              <br />
               <h6>Overall Rating</h6>
               <p>4.5</p>
             </Col>
             <Col size="md-8">
-              <h1>Rate Me!</h1>
+              <h1 className='parkTitle text-success'>Rate Me!</h1>
               <form className="form">
                 {/* <div className="form-group col-md-8">
                   <label>Park Name</label>
                   <input type="text" className="form-control" id="inputAddress" placeholder="Skate Park Name" />
                 </div> */}
                 <div className="form-group col-md-4">
-                  <label>Rating</label>
+                  <label className=''>Rating</label>
                   <select name="rating" value={this.state.rating} onChange={this.handleInputChange} className="form-control">
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -108,15 +119,16 @@ class Park2 extends Component {
                   </select>
                 </div>
                 <div className="form-group col-md-12">
-                  <label>Review</label>
+                  <label className=''>Review</label>
                   <input type="text" className="form-control" name="text" value={this.state.text} onChange={this.handleInputChange} placeholder="What was your experience like?" />
                 </div>
               </form>
-              <button className="btn btn-dark" onClick={this.handleFormSubmit}>Submit Review</button>
+              <button className="btn btn-success" onClick={this.handleFormSubmit}>Submit Review</button>
             </Col>
           </Row>
+            <ImgMap />
           <Row>
-            <h1>Map goes here</h1>
+
           </Row>
         </Container>
       </>
