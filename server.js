@@ -17,9 +17,9 @@ require('./config/passport')(passport);
 const db = require('./config/keys').MongoURI;
 
 // Mongo Connection
-mongoose.connect(db, { useNewUrlParser: true })
-    .then(() => console.log('Mongo Connected'))
-    .catch(err => console.log(err));
+// mongoose.connect(db, { useNewUrlParser: true })
+//     .then(() => console.log('Mongo Connected'))
+//     .catch(err => console.log(err));
 
 // Middleware definitions. Bodyparser and json format
 app.use(express.urlencoded({ extended: false })); // To get data from forms through req.body. When to keep true and when to keep false?
@@ -76,7 +76,9 @@ app.use(routes);
 // const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/pianoRollDB"
 
 // COnnect to the mongo db
-mongoose.connect(MONGODB_URI || `mongodb://${process.env.MLAB_DBNAME}:${process.env.MLAB_PASSWORD}ds243054.mlab.com:43054/heroku_w46s2bnm`);
+mongoose.connect(db, { useNewUrlParser: true } || `mongodb://${process.env.MLAB_DBNAME}:${process.env.MLAB_PASSWORD}ds243054.mlab.com:43054/heroku_w46s2bnm`)
+    .then(() => console.log('Mongo Connected'))
+    .catch((err) => console.log(err));
 
 app.listen(PORT, (err) => {
     if (err) throw err;
