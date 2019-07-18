@@ -40,6 +40,11 @@ class SignUpForm extends Component {
                 email: this.state.email,
                 password: this.state.password
             })
+                .then((res) => {
+                    if (res.data.success) {
+                        localStorage.setItem('isLoggedIn', true)
+                    }
+                })
                 .catch(err => console.log(err));
         }
 

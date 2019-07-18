@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import ReactMapGL from "react-map-gl";
+import { Link } from 'react-router-dom';
 import API from '../utils/API';
 import Container from '../components/Container';
 import Row from '../components/Row';
@@ -24,7 +25,7 @@ class Park2 extends Component {
     const name = event.target.name;
 
     this.setState({
-        [name]: value
+      [name]: value
     });
   };
 
@@ -50,6 +51,30 @@ class Park2 extends Component {
   };
 
   render() {
+    if (!JSON.parse(localStorage.getItem('isLoggedIn'))) {
+      return (
+        <Container>
+          <Row>
+            <Col size="sm-6">
+              <h3>Not a member? Sign up already!</h3>
+              <button className="btn btn-outline-primary">
+                <Link to='/signup'>
+                  Sign Up
+            </Link>
+              </button>
+            </Col>
+            <Col size="sm-6">
+              <h3>Already a member? Login then!</h3>
+              <button className="btn btn-outline-primary">
+                <Link to='/login'>
+                  Login
+            </Link>
+              </button>
+            </Col>
+          </Row>
+        </Container>
+      )
+    }
     return (
       <>
         <Container>
