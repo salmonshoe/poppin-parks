@@ -1,3 +1,16 @@
 nav.navbar.navbar-default {
     margin-bottom: 0;
   }
+
+  .logoFont {
+    font-family: 'Londrina Solid', cursive;
+    font-size: x-large;
+    text-transform: uppercase;
+
+  }
+
+  .parkTitle {
+        font-family: 'Londrina Solid',
+        cursive;
+        text-transform: uppercase;
+  }

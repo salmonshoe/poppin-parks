@@ -1,0 +1,10 @@
+.bkgndWrapper3 {
+    background: url('/img/PainsPark-001.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+    height: 500px;
+    margin-bottom: 15vh;
+    margin-top: 5vh;
+}
