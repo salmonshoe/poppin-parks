@@ -9,7 +9,7 @@
     "react-dom": "^16.8.6",
     "react-map-gl": "^5.0.3",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.0.1"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": " set \"REACT_APP_MAPBOX_TOKEN=pk.eyJ1IjoiYmVubmdvODkiLCJhIjoiY2p4dWc0YjNxMTR5czNicDZxeTFkZDVuMiJ9.phnMeC3OXn7c0E1vxk6ZyA\" && react-scripts start ",
